@@ -59,9 +59,9 @@
                             this.cancel_url +
                             this.error_url +
                             this.pagecon_url +
-                            this.free1 +
-                            this.free2 +
-                            this.free3 +
+                            //this.free1 +
+                            //this.free2 +
+                            //this.free3 +
                             this.request_date +
                             this.limit_second +
                             this.hashkey;
@@ -87,9 +87,9 @@
                     this.cancel_url            = "https://ufret-api.test.amela.vn/payment/buy/cancel.php";
                     this.error_url             = "https://ufret-api.test.amela.vn/payment/buy/error.php";
                     this.pagecon_url           = "https://ufret-api.test.amela.vn/payment/buy/pagecon.php";
-                    this.free1                 = "";
-                    this.free2                 = "";
-                    this.free3                 = "";
+                    //this.free1                 = "";
+                    //this.free2                 = "";
+                    //this.free3                 = "";
                     this.request_date          = timeRequest;
                     this.limit_second          = "";
                     //this.hashkey               = "ab3150b95269b5f893d8a08b33cca57daaf428cc";
@@ -126,9 +126,9 @@
                     form.append($("<input>", { type: "hidden", name: "cancel_url", value: order.cancel_url }));
                     form.append($("<input>", { type: "hidden", name: "error_url", value: order.error_url }));
                     form.append($("<input>", { type: "hidden", name: "pagecon_url", value: order.pagecon_url }));
-                    form.append($("<input>", { type: "hidden", name: "free1", value: order.free1 }));
-                    form.append($("<input>", { type: "hidden", name: "free2", value: order.free2 }));
-                    form.append($("<input>", { type: "hidden", name: "free3", value: order.free3 }));
+                    //form.append($("<input>", { type: "hidden", name: "free1", value: order.free1 }));
+                    //form.append($("<input>", { type: "hidden", name: "free2", value: order.free2 }));
+                    //form.append($("<input>", { type: "hidden", name: "free3", value: order.free3 }));
                     form.append($("<input>", { type: "hidden", name: "request_date", value: order.request_date }));
                     form.append($("<input>", { type: "hidden", name: "limit_second", value: order.limit_second }));
                     form.append($("<input>", { type: "hidden", name: "sps_hashcode", value: order.sps_hashcode }));
