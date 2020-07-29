@@ -52,7 +52,7 @@
                             this.sps_payment_no +
                             //this.item_id +
                             //this.item_name +
-                            //this.service_type +
+                            this.service_type +
                             //this.tracking_id +
                             this.terminal_type +
                             this.success_url +
@@ -119,7 +119,7 @@
                     //form.append($("<input>", { type: "hidden", name: "order_id", value: order.order_id }));
                     //form.append($("<input>", { type: "hidden", name: "item_id", value: order.item_id }));
                     //form.append($("<input>", { type: "hidden", name: "item_name", value: order.item_name }));
-                    //form.append($("<input>", { type: "hidden", name: "service_type", value: order.service_type }));
+                    form.append($("<input>", { type: "hidden", name: "service_type", value: order.service_type }));
                     //form.append($("<input>", { type: "hidden", name: "tracking_id", value: order.tracking_id }));
                     form.append($("<input>", { type: "hidden", name: "terminal_type", value: order.terminal_type }));
                     form.append($("<input>", { type: "hidden", name: "success_url", value: order.success_url }));
