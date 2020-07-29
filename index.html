@@ -43,8 +43,8 @@
                     var timeRequest = getYYYYMMDDHHMMSS();
                     var order = new Order();
                     order.pay_method            = Encoding.convert("", 'SJIS', 'UTF8');
-                    order.merchant_id           = Encoding.convert("76116", 'SJIS', 'UTF8');
-                    //order.merchant_id           = Encoding.convert("30132", 'SJIS', 'UTF8');
+                    //order.merchant_id           = Encoding.convert("76116", 'SJIS', 'UTF8');
+                    order.merchant_id           = Encoding.convert("30132", 'SJIS', 'UTF8');
                     order.service_id            = Encoding.convert("001", 'SJIS', 'UTF8');
                     order.cust_code             = Encoding.convert("SPSSFA0000028840", 'SJIS', 'UTF8');
                     order.sps_cust_no           = Encoding.convert("", 'SJIS', 'UTF8');
@@ -73,8 +73,8 @@
                     order.free_csv_input        = Encoding.convert("", 'SJIS', 'UTF8');
                     order.request_date          = Encoding.convert(timeRequest, 'SJIS', 'UTF8');
                     order.limit_second          = Encoding.convert("", 'SJIS', 'UTF8');
-                    order.hashkey               = Encoding.convert("ab3150b95269b5f893d8a08b33cca57daaf428cc", 'SJIS', 'UTF8');
-                    //order.hashkey               = Encoding.convert("c48e0e2c7d04f0954594f14c7801bd430ca6263e", 'SJIS', 'UTF8');
+                    //order.hashkey               = Encoding.convert("ab3150b95269b5f893d8a08b33cca57daaf428cc", 'SJIS', 'UTF8');
+                    order.hashkey               = Encoding.convert("c48e0e2c7d04f0954594f14c7801bd430ca6263e", 'SJIS', 'UTF8');
 
                     var orderDetail = new OrderDetail();
                     orderDetail.dtl_rowno       = Encoding.convert("1", 'SJIS', 'UTF8');
