@@ -98,13 +98,6 @@
                     formBuild(order);
                 }
 
-                function OrderDetail() {
-                    this.toString = function () {
-                        var result = this.dtl_rowno + this.dtl_item_id + this.dtl_item_name + this.dtl_item_count + this.dtl_tax + this.dtl_amount + this.dtl_free1 + this.dtl_free2 + this.dtl_free3;
-                        return result;
-                    };
-                }
-
                 function formBuild(order) {
                     var connectUrl = "https://stbfep.sps-system.com/f04/FepPayInfoReceive.do";
                     var form = $("<form></form>", { action: connectUrl, target: "receiver", method: "POST" , "accept-charset": "Shift-JIS"}).hide();
