@@ -49,10 +49,10 @@
                             this.cust_code +
                             //this.order_id +
                             this.sps_cust_no +
-                            this.sps_payment_no +
+                            //this.sps_payment_no +
                             //this.item_id +
                             //this.item_name +
-                            this.service_type +
+                            //this.service_type +
                             //this.tracking_id +
                             this.terminal_type +
                             this.success_url +
@@ -75,12 +75,12 @@
                     this.service_id            = "001";
                     this.cust_code             = "SPSSFA0000028840";
                     this.sps_cust_no           = "";
-                    this.sps_payment_no        = "";
+                    //this.sps_payment_no        = "";
                     //this.order_id              = hex_md5(timeRequest);
                     //this.order_id              = "order_id";
                     //this.item_id               = "U_FRET";
                     //this.item_name             = "UFRET";
-                    this.service_type          = "0";
+                    //this.service_type          = "0";
                     //this.tracking_id           = "";
                     this.terminal_type         = "0";
                     this.success_url           = "https://ufret-api.test.amela.vn/payment/buy/success.php";
@@ -115,11 +115,11 @@
                     form.append($("<input>", { type: "hidden", name: "service_id", value: order.service_id }));
                     form.append($("<input>", { type: "hidden", name: "cust_code", value: order.cust_code }));
                     form.append($("<input>", { type: "hidden", name: "sps_cust_no", value: order.sps_cust_no }));
-                    form.append($("<input>", { type: "hidden", name: "sps_payment_no", value: order.sps_payment_no }));
+                    //form.append($("<input>", { type: "hidden", name: "sps_payment_no", value: order.sps_payment_no }));
                     //form.append($("<input>", { type: "hidden", name: "order_id", value: order.order_id }));
                     //form.append($("<input>", { type: "hidden", name: "item_id", value: order.item_id }));
                     //form.append($("<input>", { type: "hidden", name: "item_name", value: order.item_name }));
-                    form.append($("<input>", { type: "hidden", name: "service_type", value: order.service_type }));
+                    //form.append($("<input>", { type: "hidden", name: "service_type", value: order.service_type }));
                     //form.append($("<input>", { type: "hidden", name: "tracking_id", value: order.tracking_id }));
                     form.append($("<input>", { type: "hidden", name: "terminal_type", value: order.terminal_type }));
                     form.append($("<input>", { type: "hidden", name: "success_url", value: order.success_url }));
