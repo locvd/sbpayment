@@ -90,12 +90,13 @@
                     this.limit_second          = "1000";
                     this.hashkey               = "ab3150b95269b5f893d8a08b33cca57daaf428cc";
                     //order.hashkey               = "c48e0e2c7d04f0954594f14c7801bd430ca6263e";
-                    this.sps_hashcode = Sha1.hash(this.toString());
+                    
                 }
 
 
                 function formSubmit() {
                     var order = new Order();
+                    order.sps_hashcode = Sha1.hash(order.toString());
                     formBuild(order);
                 }
 
