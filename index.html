@@ -47,7 +47,9 @@
                             this.merchant_id +
                             this.service_id +
                             this.cust_code +
-                            this.order_id +
+                            //this.order_id +
+                            this.sps_cust_no +
+                            this.sps_payment_no +
                             this.item_id +
                             this.item_name +
                             this.service_type +
@@ -72,7 +74,9 @@
                     this.merchant_id           = "30132";
                     this.service_id            = "001";
                     this.cust_code             = "SPSSFA0000028840";
-                    this.order_id              = hex_md5(timeRequest);
+                    this.sps_cust_no           = "";
+                    this.sps_payment_no        = "";
+                    //this.order_id              = hex_md5(timeRequest);
                     //this.order_id              = "order_id";
                     this.item_id               = "U_FRET";
                     this.item_name             = "UFRET";
