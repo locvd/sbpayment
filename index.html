@@ -47,21 +47,11 @@
                             this.merchant_id +
                             this.service_id +
                             this.cust_code +
-                            //this.order_id +
-                            //this.sps_cust_no +
-                            //this.sps_payment_no +
-                            //this.item_id +
-                            //this.item_name +
-                            //this.service_type +
-                            //this.tracking_id +
-                            //this.terminal_type +
+                            this.service_type +
                             this.success_url +
                             this.cancel_url +
                             this.error_url +
                             this.pagecon_url +
-                            //this.free1 +
-                            //this.free2 +
-                            //this.free3 +
                             this.request_date +
                             this.limit_second +
                             this.hashkey;
@@ -69,31 +59,22 @@
                     };
 
                     var timeRequest = getYYYYMMDDHHMMSS();
-                    this.pay_method            = "softbank2";
+                    this.pay_method            = "";
                     this.merchant_id           = "76116";
-                    //this.merchant_id           = "30132";
+                    this.merchant_id           = "30132";
                     this.service_id            = "001";
                     this.cust_code             = "SPSSFA0000028840";
-                    //this.sps_cust_no           = "";
-                    //this.sps_payment_no        = "";
-                    //this.order_id              = hex_md5(timeRequest);
-                    //this.order_id              = "order_id";
-                    //this.item_id               = "U_FRET";
-                    //this.item_name             = "UFRET";
-                    //this.service_type          = "0";
-                    //this.tracking_id           = "";
-                    //this.terminal_type         = "0";
+                    this.service_type          = "0";
+
                     this.success_url           = "https://ufret-api.test.amela.vn/payment/buy/success.php";
                     this.cancel_url            = "https://ufret-api.test.amela.vn/payment/buy/cancel.php";
                     this.error_url             = "https://ufret-api.test.amela.vn/payment/buy/error.php";
                     this.pagecon_url           = "https://ufret-api.test.amela.vn/payment/buy/pagecon.php";
-                    //this.free1                 = "";
-                    //this.free2                 = "";
-                    //this.free3                 = "";
+                    
                     this.request_date          = timeRequest;
                     this.limit_second          = "";
-                    this.hashkey               = "ab3150b95269b5f893d8a08b33cca57daaf428cc";
-                    //this.hashkey               = "c48e0e2c7d04f0954594f14c7801bd430ca6263e";
+                    //this.hashkey               = "ab3150b95269b5f893d8a08b33cca57daaf428cc";
+                    this.hashkey               = "c48e0e2c7d04f0954594f14c7801bd430ca6263e";
                 }
 
 
@@ -119,7 +100,7 @@
                     //form.append($("<input>", { type: "hidden", name: "order_id", value: order.order_id }));
                     //form.append($("<input>", { type: "hidden", name: "item_id", value: order.item_id }));
                     //form.append($("<input>", { type: "hidden", name: "item_name", value: order.item_name }));
-                    //form.append($("<input>", { type: "hidden", name: "service_type", value: order.service_type }));
+                    form.append($("<input>", { type: "hidden", name: "service_type", value: order.service_type }));
                     //form.append($("<input>", { type: "hidden", name: "tracking_id", value: order.tracking_id }));
                     //form.append($("<input>", { type: "hidden", name: "terminal_type", value: order.terminal_type }));
                     form.append($("<input>", { type: "hidden", name: "success_url", value: order.success_url }));
