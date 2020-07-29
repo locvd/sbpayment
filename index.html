@@ -102,7 +102,6 @@
                     var connectUrl = "https://stbfep.sps-system.com/f01/FepBuyInfoReceive.do";
                     //var form = $("<form></form>", { action: connectUrl, target: "receiver", method: "POST" , "accept-charset": "Shift-JIS"}).hide();
                     var form = $("<form></form>", { action: connectUrl, target: "receiver", method: "POST"}).hide();
-
                     var body = $("body");
                     body.append(form);
                     form.append($("<input>", { type: "hidden", name: "pay_method", value: order.pay_method }));
