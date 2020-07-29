@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+    <head>
+        <title>
+            U-FRET
+        </title>
+        <meta http-equiv="Content-Type" content="text/html; charset=SHIFT_JIS">
+        <meta http-equiv="Content-Style-Type" content="text/css">
+        <meta http-equiv="Content-Script-Type" content="text/javascript">
+        <meta name="robots" content="noindex,nofollow" />
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div style="margin-top: 50px; display: flex; justify-content: center;">
+                        <div style="max-width: 400px; padding: 0 20px; width: 100%; margin-bottom: 50px;">
+                            <h5 class="text-center" style="margin-bottom: 20px;">Payment</h5>
+
+                            <button type="button" class="btn btn-primary btn-block btn-softbank" style="margin-top: 25px;">
+                                Softbank
+                            </button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/utf8.js"></script>
+        <script src="/js/base64.js"></script>
+        <script src="/js/sha1.js"></script>
+        <script src="/js/md5.js"></script>
+        <script src="/js/moment.min.js"></script>
+        <script src="/js/moment-timezone-with-data.min.js"></script>
+        <script src="/js/encoding.min.js"></script>
+        <script>
+            (function () {
+                function formSubmit() {
+                    var timeRequest = getYYYYMMDDHHMMSS();
+                    var order = new Order();
+                    order.pay_method            = Encoding.convert("softbank2,docomo", 'SJIS', 'UTF8');
+                    order.merchant_id           = Encoding.convert("76116", 'SJIS', 'UTF8');
+                    order.service_id            = Encoding.convert("001", 'SJIS', 'UTF8');
+                    order.cust_code             = Encoding.convert("SPSSFA0000028840", 'SJIS', 'UTF8');
+                    order.order_id              = Encoding.convert(hex_md5(timeRequest, 'SJIS', 'UTF8' ) );
+                    order.item_id               = Encoding.convert("U_FRET", 'SJIS', 'UTF8');
+                    order.pay_item_id           = Encoding.convert("", 'SJIS', 'UTF8');
+                    order.item_name             = Encoding.convert("U‐FRET", 'SJIS', 'UTF8');
+                    order.service_type          = Encoding.convert("0", 'SJIS', 'UTF8');
+                    order.tracking_id           = Encoding.convert("", 'SJIS', 'UTF8');
+                    order.terminal_type         = Encoding.convert("0", 'SJIS', 'UTF8');
+                    order.success_url           = Encoding.convert("http://stbfep.sps-system.com/MerchantPaySuccess.jsp", 'SJIS', 'UTF8');
+                    order.cancel_url            = Encoding.convert("http://stbfep.sps-system.com/MerchantPayCancel.jsp", 'SJIS', 'UTF8');
+                    order.error_url             = Encoding.convert("http://stbfep.sps-system.com/MerchantPayError.jsp", 'SJIS', 'UTF8');
+                    order.pagecon_url           = Encoding.convert("http://stbfep.sps-system.com/MerchantPayResultRecieveSuccess.jsp", 'SJIS', 'UTF8');
+                    order.free1                 = Encoding.convert("", 'SJIS', 'UTF8');
+                    order.free2                 = Encoding.convert("", 'SJIS', 'UTF8');
+                    order.free3                 = Encoding.convert("", 'SJIS', 'UTF8');
+                    order.request_date          = Encoding.convert(timeRequest, 'SJIS', 'UTF8');
+                    order.limit_second          = Encoding.convert("", 'SJIS', 'UTF8');
+                    //order.hashkey               = Encoding.convert("ab3150b95269b5f893d8a08b33cca57daaf428cc", 'SJIS', 'UTF8');
+                    //order.hashkey               = Encoding.convert("c48e0e2c7d04f0954594f14c7801bd430ca6263e", 'SJIS', 'UTF8');
+
+                    
+                    order.sps_hashcode = Sha1.hash(order.toString());
+
+                    formBuild(order);
+                }
+
+                function OrderDetail() {
+                    this.toString = function () {
+                        var result = this.dtl_rowno + this.dtl_item_id + this.dtl_item_name + this.dtl_item_count + this.dtl_tax + this.dtl_amount + this.dtl_free1 + this.dtl_free2 + this.dtl_free3;
+                        return result;
+                    };
+                }
+
+                function Order() {
+                    this.orderDetail = new Array();
+                    this.toString = function () {
+                        var resultOrderDetail = "";
+                        for (i = 0; i < this.orderDetail.length; i++) {
+                            resultOrderDetail = resultOrderDetail + this.orderDetail[i].toString();
+                        }
+
+                        var result =
+                            this.pay_method +
+                            this.merchant_id +
+                            this.service_id +
+                            this.cust_code +
+                            this.order_id +
+                            this.item_id +
+                            this.item_name +
+                            this.auto_charge_type +
+                            this.service_type +
+                            this.tracking_id +
+                            this.terminal_type +
+                            this.success_url +
+                            this.cancel_url +
+                            this.error_url +
+                            this.pagecon_url +
+                            this.free1 +
+                            this.free2 +
+                            this.free3 +
+                            this.request_date +
+                            this.limit_second +
+                            'ab3150b95269b5f893d8a08b33cca57daaf428cc';
+                        return result;
+                    };
+                }
+
+                function getYYYYMMDDHHMMSS() {
+                    return moment().tz("Asia/Tokyo").format("YYYYMMDDHHmmss");
+                }
+                /*
+                function getYYYYMMDDHHMMSS(){
+                    var now = new Date();
+                    return now.getFullYear() + zeroPadding(now.getMonth() + 1) + zeroPadding(now.getDate()) +
+                        zeroPadding(now.getHours()) + zeroPadding(now.getMinutes()) + zeroPadding(now.getSeconds());
+                }
+
+                function zeroPadding(num) {
+                    if (num < 10) { num = "0" + num; }
+                    return num + "";
+                }
+                */
+
+                function formBuild(order) {
+                    var connectUrl = "https://stbfep.sps-system.com/f01/FepBuyInfoReceive.do";
+                    var form = $("<form></form>", { action: connectUrl, target: "receiver", method: "POST" , "accept-charset": "Shift-JIS"}).hide();
+
+                    var body = $("body");
+                    body.append(form);
+                    form.append($("<input>", { type: "hidden", name: "pay_method", value: order.pay_method }));
+                    form.append($("<input>", { type: "hidden", name: "merchant_id", value: order.merchant_id }));
+                    form.append($("<input>", { type: "hidden", name: "service_id", value: order.service_id }));
+                    form.append($("<input>", { type: "hidden", name: "cust_code", value: order.cust_code }));
+                    form.append($("<input>", { type: "hidden", name: "sps_cust_no", value: order.sps_cust_no }));
+                    form.append($("<input>", { type: "hidden", name: "sps_payment_no", value: order.sps_payment_no }));
+                    form.append($("<input>", { type: "hidden", name: "order_id", value: order.order_id }));
+                    form.append($("<input>", { type: "hidden", name: "item_id", value: order.item_id }));
+                    form.append($("<input>", { type: "hidden", name: "pay_item_id", value: order.pay_item_id }));
+                    form.append($("<input>", { type: "hidden", name: "item_name", value: order.item_name }));
+                    form.append($("<input>", { type: "hidden", name: "tax", value: order.tax }));
+                    form.append($("<input>", { type: "hidden", name: "amount", value: order.amount }));
+                    form.append($("<input>", { type: "hidden", name: "pay_type", value: order.pay_type }));
+                    form.append($("<input>", { type: "hidden", name: "auto_charge_type", value: order.auto_charge_type }));
+                    form.append($("<input>", { type: "hidden", name: "service_type", value: order.service_type }));
+                    form.append($("<input>", { type: "hidden", name: "div_settele", value: order.div_settele }));
+                    form.append($("<input>", { type: "hidden", name: "last_charge_month", value: order.last_charge_month }));
+                    form.append($("<input>", { type: "hidden", name: "camp_type", value: order.camp_type }));
+                    form.append($("<input>", { type: "hidden", name: "tracking_id", value: order.tracking_id }));
+                    form.append($("<input>", { type: "hidden", name: "terminal_type", value: order.terminal_type }));
+                    form.append($("<input>", { type: "hidden", name: "success_url", value: order.success_url }));
+                    form.append($("<input>", { type: "hidden", name: "cancel_url", value: order.cancel_url }));
+                    form.append($("<input>", { type: "hidden", name: "error_url", value: order.error_url }));
+                    form.append($("<input>", { type: "hidden", name: "pagecon_url", value: order.pagecon_url }));
+                    form.append($("<input>", { type: "hidden", name: "free1", value: order.free1 }));
+                    form.append($("<input>", { type: "hidden", name: "free2", value: order.free2 }));
+                    form.append($("<input>", { type: "hidden", name: "free3", value: order.free3 }));
+                    form.append($("<input>", { type: "hidden", name: "free_csv", value: order.free_csv }));
+                    form.append($("<input>", { type: "hidden", name: "request_date", value: order.request_date }));
+                    form.append($("<input>", { type: "hidden", name: "limit_second", value: order.limit_second }));
+                    form.append($("<input>", { type: "hidden", name: "hashkey", value: order.hashkey }));
+                    form.append($("<input>", { type: "hidden", name: "sps_hashcode", value: order.sps_hashcode }));
+
+                    for (i = 0; i < order.orderDetail.length; i++) {
+                        form.append($("<input>", { type: "hidden", name: "dtl_rowno", value: order.orderDetail[i].dtl_rowno }));
+                        form.append($("<input>", { type: "hidden", name: "dtl_item_id", value: order.orderDetail[i].dtl_item_id }));
+                        form.append($("<input>", { type: "hidden", name: "dtl_item_name", value: order.orderDetail[i].dtl_item_name }));
+                        form.append($("<input>", { type: "hidden", name: "dtl_item_count", value: order.orderDetail[i].dtl_item_count }));
+                        form.append($("<input>", { type: "hidden", name: "dtl_tax", value: order.orderDetail[i].dtl_tax }));
+                        form.append($("<input>", { type: "hidden", name: "dtl_amount", value: order.orderDetail[i].dtl_amount }));
+                        form.append($("<input>", { type: "hidden", name: "dtl_free1", value: order.orderDetail[i].dtl_free1 }));
+                        form.append($("<input>", { type: "hidden", name: "dtl_free2", value: order.orderDetail[i].dtl_free2 }));
+                        form.append($("<input>", { type: "hidden", name: "dtl_free3", value: order.orderDetail[i].dtl_free3 }));
+                    }
+
+                    form.submit();
+                }
+
+                $(document).on("click", ".btn-softbank", function (event) {
+                    event.preventDefault();
+                    formSubmit();
+                });
+            })(jQuery);
+        </script>
+    </body>
+</html>
