@@ -69,28 +69,28 @@
                     };
 
                     var timeRequest = getYYYYMMDDHHMMSS();
-                    order.pay_method            = "softbank2,docomo";
-                    order.merchant_id           = "76116";
-                    order.service_id            = "001";
-                    order.cust_code             = "SPSSFA0000028840";
-                    order.order_id              = hex_md5(timeRequest);
-                    order.item_id               = "U_FRET";
-                    order.item_name             = "U‐FRET";
-                    order.service_type          = "0";
-                    order.tracking_id           = "";
-                    order.terminal_type         = "0";
-                    order.success_url           = "http://stbfep.sps-system.com/MerchantPaySuccess.jsp";
-                    order.cancel_url            = "http://stbfep.sps-system.com/MerchantPayCancel.jsp";
-                    order.error_url             = "http://stbfep.sps-system.com/MerchantPayError.jsp";
-                    order.pagecon_url           = "http://stbfep.sps-system.com/MerchantPayResultRecieveSuccess.jsp";
-                    order.free1                 = "";
-                    order.free2                 = "";
-                    order.free3                 = "";
-                    order.request_date          = timeRequest;
-                    order.limit_second          = "";
-                    order.hashkey               = "ab3150b95269b5f893d8a08b33cca57daaf428cc";
+                    this.pay_method            = "softbank2,docomo";
+                    this.merchant_id           = "76116";
+                    this.service_id            = "001";
+                    this.cust_code             = "SPSSFA0000028840";
+                    this.order_id              = hex_md5(timeRequest);
+                    this.item_id               = "U_FRET";
+                    this.item_name             = "U‐FRET";
+                    this.service_type          = "0";
+                    this.tracking_id           = "";
+                    this.terminal_type         = "0";
+                    this.success_url           = "http://stbfep.sps-system.com/MerchantPaySuccess.jsp";
+                    this.cancel_url            = "http://stbfep.sps-system.com/MerchantPayCancel.jsp";
+                    this.error_url             = "http://stbfep.sps-system.com/MerchantPayError.jsp";
+                    this.pagecon_url           = "http://stbfep.sps-system.com/MerchantPayResultRecieveSuccess.jsp";
+                    this.free1                 = "";
+                    this.free2                 = "";
+                    this.free3                 = "";
+                    this.request_date          = timeRequest;
+                    this.limit_second          = "1000";
+                    this.hashkey               = "ab3150b95269b5f893d8a08b33cca57daaf428cc";
                     //order.hashkey               = "c48e0e2c7d04f0954594f14c7801bd430ca6263e";
-                    order.sps_hashcode = Sha1.hash(order.toString());
+                    this.sps_hashcode = Sha1.hash(this.toString());
                 }
 
 
